@@ -75,6 +75,9 @@ module.exports = function(opt) {
         }
 
         if (typeof val !== 'object') {
+          if (typeof val === 'string') {
+            val = '"' + val + '"';
+          }
           cb('$' + path + key + ': ' + val + opt.eol);
         } else {
           loadVariablesRecursive(val, path + key + opt.delim, cb);
